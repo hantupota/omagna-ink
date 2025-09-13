@@ -3,387 +3,245 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OMAGNA INK: Studio Tato & Tindik Profesional | Sihanoukville, Poipet, Jakarta</title>
+<title>F OMAGNA INK: Studio Tato & Tindik Profesional | Sihanoukville, Poipet, Jakarta</title>
 <meta name="description" content="OMAGNA INK adalah studio tato & tindik profesional di Sihanoukville, Poipet, Jakarta, dan Chrey Thum. Jelajahi portofolio kami, bergabung dengan komunitas, dan pesan janji temu Anda.">
 <meta name="author" content="OMAGNA.INK">
 <meta name="keywords" content="omagna ink, tato profesional, tindik, piercing, studio tato, sihanoukville, poipet, jakarta, chrey thum, komunitas tato, seni tato">
 
-<!-- Memuat font Montserrat untuk tampilan profesional dan konsisten -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-<!-- Skema Data Terstruktur untuk SEO Lokal -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "OMAGNA INK Professional Tattoo Studio & Piercing Shop",
-  "image": "https://raw.githubusercontent.com/hantupota/Omagna-Ink-landing-page/refs/heads/main/image/omagnaink-logo2025-transparant.webp",
-  "url": "https://omagna.ink",
-  "telephones": "+85592376291",
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "09:00",
-      "closes": "21:00"
-    }
-  ],
-  "sameAs": [
-    "https://www.instagram.com/omagna.ink",
-    "https://www.tiktok.com/@omagna.ink.kps",
-    "https://www.facebook.com/omagnainkstudio"
-  ],
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Chrey Thum, Cambodia"
-    },
-    {
-      "@type": "City",
-      "name": "Poipet, Cambodia"
-    },
-    {
-      "@type": "City",
-      "name": "Jakarta, Indonesia"
-    },
-    {
-      "@type": "City",
-      "name": "Sihanoukville, Cambodia"
-    }
-  ],
-  "serviceType": ["Tattoo Studio", "Piercing Shop"]
-}
-</script>
-
 <style>
-/*===== Variabel CSS untuk kemudahan kustomisasi =====*/
 :root {
-  --navy-1: #012b56; /* primary dark navy — tombol & bentuk bawah */
-  --navy-2: #023262; /* varian untuk logo / stroke */
-  --bg-light: #f5f5f5; /* background utama */
-  --panel-white: #ffffff; /* putih */
-  --tab-white: #ececec; /* left tab / subtle grey */
-  --accent-red: #d91602; /* logo flame */
-  --text-dark: #1d334f; /* judul kecil / subtitle */
-
-  /* Warna ikon, digunakan sebagai referensi */
-  --icon-telegram: #62ffe2;
-  --icon-whatsapp: #5eff77;
-  --icon-globe: #ff8e00;
-  --icon-facebook: #008eff;
-  
-  --btn-height: 80px;
-  --btn-radius: 16px;
-  --left-width: 120px;
-  --icon-circle: 130px;
-  --safe-max: 500px;
+  --navy-1:#012b56; --navy-2:#023262;
+  --bg-light:#f5f5f5; --panel-white:#fff; --tab-white:#ececec;
+  --accent-red:#d91602; --text-dark:#1d334f;
+  --icon-circle:8vw;
+  --btn-radius:1rem;
 }
 
-/*===== Gaya Dasar & Optimalisasi Global =====*/
-* {box-sizing: border-box; margin: 0; padding: 0}
-html, body {height: 100%}
-body {
-  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: var(--bg-light);
-  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-  padding: 0 16px 30px; /* Padding atas dihilangkan untuk menaikkan logo */
-  min-height: 100vh; position: relative; overscroll-behavior: contain;
-  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+/* === Layout Utama: 9:16 container === */
+html,body{
+  margin:0;padding:0;height:100%;
+  font-family:'Montserrat',system-ui,sans-serif;
+  background:var(--bg-light);
+  -webkit-font-smoothing:antialiased;
+}
+body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-/* Lapisan Latar Belakang */
-.bg-layer {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
-  background: url('https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/bg2.png') no-repeat top center/contain;
-  pointer-events: none;
-}
-.gradient-overlay {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 40%, rgba(255,255,255,0.1) 100%);
-  pointer-events: none;
-}
-.wrap {
-  position: relative; z-index: 10; width: 100%; max-width: var(--safe-max);
-  margin: 0 auto; text-align: center;
+/* Kontainer dengan rasio 9:16, selalu center */
+.main-container{
+  position:relative;
+  width:100%;
+  max-width:1080px;
+  aspect-ratio:9/16;
+  background:var(--bg-light);
+  overflow:auto;
+  box-shadow:0 0 40px rgba(0,0,0,.1);
 }
 
-/*===== Header & Logo =====*/
-.header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-.text-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+/* Konten di dalam container */
+.wrap{
+  padding:2vh 4vw;
+  text-align:center;
 }
 
-.logo {
-  margin-bottom: 5px; /* Kurangi jarak antara logo dan teks */
+/* Typografi responsif */
+.welcome-sm{
+  font-size:clamp(0.8rem,1.5vw,1.1rem);
+  color:var(--text-dark);
+  letter-spacing:.1em;
+  font-weight:600;
 }
-.logo img {
-  width: 280px; max-width: 90%; height: auto; display: block; margin: 0 auto;
-  transition: transform 0.3s ease; border-radius: 8px;
-}
-.logo img:hover {transform: scale(1.02)}
-
-.welcome-sm {
-  font-size: 14px; color: var(--text-dark); letter-spacing: 1.5px;
-  font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-.title {
-  font-size: 22px; font-weight: 800; color: var(--text-dark); letter-spacing: 1.2px;
-  text-transform: uppercase; margin: 0; 
-  line-height: 1.2; text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 5px;
+.title{
+  font-size:clamp(1.6rem,4vw,2.5rem);
+  font-weight:800;
+  color:var(--text-dark);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin:.5rem 0 1rem;
 }
 
-/*===== Komponen Tombol =====*/
-.btns {
-  display: flex; flex-direction: column; gap: 15px; margin-top: 15px; padding: 0 10px;
-}
-a.link {
-  display: flex; align-items: stretch; height: var(--btn-height); border-radius: var(--btn-radius);
-  position: relative; text-decoration: none; min-width: 100%; transition: transform 120ms ease;
-}
-.left {
-  width: var(--left-width); min-width: var(--left-width);
-  background: linear-gradient(180deg, var(--panel-white), var(--tab-white));
-  border-top-left-radius: var(--btn-radius); border-bottom-left-radius: var(--btn-radius);
-  display: flex; align-items: center; justify-content: center; position: relative; z-index: 3;
-  box-shadow: 8px 10px 18px rgba(6,34,66,0.06), -4px -4px 10px rgba(255,255,255,0.9);
-}
-.icon-circle {
-  width: var(--icon-circle); height: var(--icon-circle); border-radius: 50%;
-  background: linear-gradient(180deg, var(--panel-white), var(--tab-white));
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: inset 3px 4px 8px rgba(6,34,66,0.08), inset -4px -4px 10px rgba(255,255,255,0.95);
-  transition: all 0.3s ease;
-}
-.icon-circle img {
-  width: 85px; height: 85px;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
-}
-a.link:hover .icon-circle {
-  box-shadow: inset 3px 4px 8px rgba(6,34,66,0.12), inset -4px -4px 10px rgba(255,255,255,0.95);
-  transform: scale(1.05);
-}
-.right {
-  flex: 1;
-  background: linear-gradient(180deg, var(--navy-1), var(--navy-2));
-  border-top-right-radius: var(--btn-radius); border-bottom-right-radius: var(--btn-radius);
-  display: flex; align-items: center; padding-left: 20px; padding-right: 15px;
-  position: relative; color: #fff; font-weight: 700; letter-spacing: 0.8px;
-  text-transform: uppercase; font-size: 14px; z-index: 2;
-  box-shadow: 0 6px 0 rgba(6,34,66,0.44);
-}
-.right::before {
-  content: ''; position: absolute; left: -30px; top: 0; height: 100%; width: 45px;
-  background: linear-gradient(180deg, var(--navy-1), var(--navy-2));
-  transform: skewX(-22deg); z-index: 4; border-top-left-radius: 6px; border-bottom-left-radius: 6px;
-}
-a.link:hover .right {transform: translateY(-3px); box-shadow: 0 10px 0 rgba(6,34,66,0.18)}
-a.link:active {transform: translateY(2px)}
-
-/*===== Bagian Lokasi & Layanan Baru =====*/
-.info-section {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+/* Logo */
+.logo img{
+  max-width:60vw;
+  width: clamp(180px,40vw,280px);
+  height:auto;
+  border-radius:.5rem;
 }
 
-.info-section h2 {
-  font-size: 16px;
-  color: var(--text-dark);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  letter-spacing: 1.2px;
+/* Tombol link */
+.btns{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+  margin-top:2vh;
+}
+a.link{
+  display:flex;
+  text-decoration:none;
+  border-radius:var(--btn-radius);
+  overflow:hidden;
+  color:#fff;
+}
+.left{
+  background:linear-gradient(180deg,var(--panel-white),var(--tab-white));
+  display:flex;align-items:center;justify-content:center;
+  min-width:18vw;
+}
+.icon-circle{
+  width:var(--icon-circle);
+  height:var(--icon-circle);
+  min-width:70px;min-height:70px;
+  border-radius:50%;
+  background:linear-gradient(180deg,var(--panel-white),var(--tab-white));
+  display:flex;align-items:center;justify-content:center;
+}
+.icon-circle img{width:60%;height:60%;object-fit:contain}
+.right{
+  flex:1;
+  padding:0 1rem;
+  background:linear-gradient(180deg,var(--navy-1),var(--navy-2));
+  display:flex;align-items:center;
+  font-weight:700;
+  font-size:clamp(.9rem,2vw,1rem);
+  letter-spacing:.05em;
 }
 
-.info-section ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+/* Info Section */
+.info-section{
+  margin-top:3vh;
+}
+.info-section h2{
+  font-size:clamp(1rem,2vw,1.2rem);
+  color:var(--text-dark);
+  margin-bottom:.5rem;
+  text-transform:uppercase;
+}
+.info-section li{
+  font-size:clamp(.8rem,1.8vw,1rem);
+  color:var(--text-dark);
+  list-style:none;
+  line-height:1.6;
 }
 
-.info-section ul li {
-  color: var(--text-dark);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.6;
+/* Lokasi tombol */
+.loc{
+  display:flex;align-items:center;justify-content:center;
+  gap:.6rem;margin-top:2vh;
+  background:var(--panel-white);
+  border-radius:2rem;
+  padding:.8rem 1.4rem;
+  color:var(--navy-1);
+  font-weight:700;
+  text-transform:uppercase;
+  text-decoration:none;
+  font-size:clamp(.8rem,1.8vw,1rem);
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.loc img{width:clamp(40px,8vw,65px);height:auto}
+
+/* Footer */
+footer{
+  margin-top:3vh;
+}
+.footer-socials{
+  display:flex;justify-content:center;gap:1.5rem;
+}
+.social{
+  width:clamp(50px,8vw,80px);
+  height:clamp(50px,8vw,80px);
+  background:var(--navy-1);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.social img{
+  width:60%;height:60%;
+  filter:brightness(0) invert(1);
+}
+.copyright-img{
+  display:block;
+  margin:1.5rem auto 0;
+  width:clamp(120px,30vw,220px);
+  height:auto;
 }
 
-/*===== Lokasi & Footer =====*/
-.loc {
-  display: flex; align-items: center; justify-content: center; gap: 10px; height: 70px;
-  border-radius: 32px; background: var(--panel-white); color: var(--navy-1);
-  font-weight: 700; letter-spacing: 1.2px;
-  box-shadow: 8px 10px 20px rgba(6,34,66,0.06), -4px -4px 10px rgba(255,255,255,0.9);
-  text-transform: uppercase; margin-top: 15px; padding: 0 20px; font-size: 14px;
-  transition: all 0.3s ease; text-decoration: none;
-}
-.loc img {width: 65px; height: 65px}
-.loc:hover {transform: translateY(-2px); box-shadow: 10px 12px 22px rgba(6,34,66,0.08), -4px -4px 10px rgba(255,255,255,0.9)}
-
-footer {margin-top: 35px}
-.footer-socials {display: flex; align-items: center; justify-content: center; gap: 24px}
-.social {
-  width: 80px; height: 80px;
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  background: var(--navy-1); border: 3px solid var(--panel-white);
-  box-shadow: 0 4px 12px rgba(6,34,66,0.15), 0 2px 4px rgba(0,0,0,0.1);
-  transition: all 0.3s ease; position: relative; overflow: hidden;
-}
-.social img {
-  width: 55px; height: 55px;
-  filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,0.2));
-  z-index: 2; position: relative; transition: transform 0.3s ease;
-}
-.social:hover {transform: translateY(-4px) scale(1.1); background: var(--navy-2)}
-.social:hover img {transform: scale(1.15)}
-.copyright-img {margin-top: 25px; width: 220px; display: block; margin-left: auto; margin-right: auto; opacity: .95}
-
-/*===== Fokus Aksesibilitas =====*/
-a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; border-radius: 16px}
-.loc:focus-visible, .social:focus-visible {border-radius: 9999px}
-
-/*===== Responsif untuk Mobile-First Design =====*/
-@media(max-width: 600px) {
-  .header-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  .welcome-sm, .title {
-    margin: 0;
-  }
-  .logo {
-    margin-bottom: 5px;
-  }
-  body { padding-top: 0; } 
-  .icon-circle{width:110px;height:110px}
-  .icon-circle img{width:75px;height:75px}
-  .social{width:70px;height:70px}
-  .social img{width:45px;height:45px}
-  .loc img{width:55px;height:55px}
-}
-@media(max-width: 400px) {
-  body { padding-top: 0; } 
-  .icon-circle{width:95px;height:95px}
-  .icon-circle img{width:65px;height:65px}
-  .social{width:60px;height:60px}
-  .social img{width:40px;height:40px}
-  .loc img{width:48px;height:48px}
+/* Fokus aksesibilitas */
+a:focus-visible{
+  outline:3px solid rgba(1,43,86,.4);
+  outline-offset:4px;
+  border-radius:.5rem;
 }
 </style>
 </head>
-<body>
-<div class="bg-layer" aria-hidden="true"></div>
-<div class="gradient-overlay" aria-hidden="true"></div>
 
-<main class="wrap" role="main">
-  <div class="header-container">
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/hantupota/Omagna-Ink-landing-page/refs/heads/main/image/omagnaink-logo2025-transparant.webp" 
-           alt="Logo OMAGNA.INK transparan, melambangkan studio tato dan tindik profesional di berbagai lokasi" width="280" height="120" loading="eager">
-    </div>
-    <div class="text-block">
+<body>
+  <main class="main-container">
+    <div class="wrap">
+      <div class="logo">
+        <img src="https://raw.githubusercontent.com/hantupota/Omagna-Ink-landing-page/refs/heads/main/image/omagnaink-logo2025-transparant.webp"
+          alt="Logo OMAGNA INK">
+      </div>
       <p class="welcome-sm">WELCOME TO</p>
       <h1 class="title">OMAGNA INK</h1>
+
+      <div class="btns">
+        <a class="link" href="https://t.me/omagnainkgallery" target="_blank" rel="noopener">
+          <div class="left">
+            <div class="icon-circle">
+              <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/tele.png" alt="Telegram">
+            </div>
+          </div>
+          <div class="right">Komunitas Telegram</div>
+        </a>
+
+        <a class="link" href="https://wa.me/85592376291" target="_blank" rel="noopener">
+          <div class="left">
+            <div class="icon-circle">
+              <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/wa.png" alt="WhatsApp">
+            </div>
+          </div>
+          <div class="right">WhatsApp Official</div>
+        </a>
+      </div>
+
+      <div class="info-section">
+        <h2>Lokasi Studio</h2>
+        <ul>
+          <li>Chrey Thum, Cambodia</li>
+          <li>Poipet, Cambodia</li>
+          <li>Jakarta, Indonesia</li>
+          <li>Sihanoukville, Cambodia</li>
+        </ul>
+      </div>
+
+      <a class="loc" href="https://maps.app.goo.gl/X3QNBRPypLovY6xF9" target="_blank" rel="noopener">
+        <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/loc2.png" alt="Lokasi">
+        OMAGNA INK KPS LOCATION
+      </a>
+
+      <footer>
+        <div class="footer-socials">
+          <a class="social" href="https://www.instagram.com/omagna.ink" target="_blank" rel="noopener">
+            <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/IG%20white.png" alt="Instagram">
+          </a>
+          <a class="social" href="https://www.tiktok.com/@omagna.ink.kps" target="_blank" rel="noopener">
+            <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/tiktok%20white.png" alt="TikTok">
+          </a>
+          <a class="social" href="https://www.youtube.com/@omagnaink" target="_blank" rel="noopener">
+            <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/youtube.png" alt="YouTube">
+          </a>
+        </div>
+        <img class="copyright-img"
+          src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/%C2%A9%202025%20OMAGNA%20SIHANOUKVILLE.png"
+          alt="Copyright 2025 OMAGNA INK">
+      </footer>
     </div>
-  </div>
-
-  <!-- Tombol-tombol -->
-  <div class="btns" aria-label="Link buttons">
-    <a class="link" href="https://t.me/omagnainkgallery?utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Grup Komunitas Telegram Omagna">
-      <div class="left">
-        <div class="icon-circle">
-          <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/tele.png" alt="ikon Telegram" width="85" height="85" loading="lazy" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=TG'">
-        </div>
-      </div>
-      <div class="right"><span>KOMUNITAS TELEGRAM OMAGNA</span></div>
-    </a>
-
-    <a class="link" href="https://t.me/OmagnainkKPS?utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Telegram Official Omagna KPS">
-      <div class="left">
-        <div class="icon-circle">
-          <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/tele.png" alt="ikon Telegram" width="85" height="85" loading="lazy" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=TG'">
-        </div>
-      </div>
-      <div class="right"><span>TELEGRAM OFFICIAL OMAGNA KPS</span></div>
-    </a>
-
-    <a class="link" href="https://wa.me/85592376291?utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp Official Omagna KPS">
-      <div class="left">
-        <div class="icon-circle">
-          <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/wa.png" alt="ikon WhatsApp" width="85" height="85" loading="lazy" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=WA'">
-        </div>
-      </div>
-      <div class="right"><span>WHATSAPP OFFICIAL OMAGNA KPS</span></div>
-    </a>
-
-    <a class="link" href="https://www.omagna.ink?utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Website Official Omagna">
-      <div class="left">
-        <div class="icon-circle">
-          <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/web.png" alt="ikon situs web" width="85" height="85" loading="lazy" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=WEB'">
-        </div>
-      </div>
-      <div class="right"><span>WEBSITE OFFICIAL OMAGNA</span></div>
-    </a>
-
-    <a class="link" href="https://www.facebook.com/omagnainkstudio/?utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Facebook Official Omagna">
-      <div class="left">
-        <div class="icon-circle">
-          <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/fb.png" alt="ikon Facebook" width="85" height="85" loading="lazy" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=FB'">
-        </div>
-      </div>
-      <div class="right"><span>FACEBOOK OFFICIAL OMAGNA</span></div>
-    </a>
-  </div>
-
-  <!-- Lokasi Studio -->
-  <div class="info-section">
-    <h2>LOKASI STUDIO</h2>
-    <ul>
-      <li>Chrey Thum, Cambodia</li>
-      <li>Poipet, Cambodia</li>
-      <li>Jakarta, Indonesia</li>
-      <li>Sihanoukville, Cambodia</li>
-    </ul>
-  </div>
-  
-  <!-- Lokasi -->
-  <a class="loc" href="https://maps.app.goo.gl/X3QNBRPypLovY6xF9?g_st=ipc&utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Lokasi Omagna Ink KPS">
-    <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/loc2.png" alt="ikon lokasi" width="65" height="65" loading="lazy" onerror="this.src='https://placehold.co/65x65/0d2c54/ffffff?text=LOC'">
-    <div>OMAGNA INK KPS LOCATION</div>
-  </a>
-
-  <!-- Footer + Sosial Media -->
-  <footer role="contentinfo">
-    <div class="footer-socials" aria-label="Sosial media">
-      <a class="social" href="https://www.instagram.com/omagna.ink?igsh=anFpZTY2NXk0ejc4&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram Omagna">
-        <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/IG%20white.png" alt="ikon Instagram" width="55" height="55" loading="lazy" onerror="this.src='https://placehold.co/55x55/0d2c54/ffffff?text=IG'">
-      </a>
-      <a class="social" href="https://www.tiktok.com/@omagna.ink.kps?_t=ZS-8zfSXyoIz7V&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok Omagna">
-        <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/tiktok%20white.png" alt="ikon TikTok" width="55" height="55" loading="lazy" onerror="this.src='https://placehold.co/55x55/0d2c54/ffffff?text=TT'">
-      </a>
-      <a class="social" href="https://www.youtube.com/@omagnaink" target="_blank" rel="noopener noreferrer" aria-label="YouTube Omagna">
-        <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/youtube.png" alt="ikon YouTube" width="55" height="55" loading="lazy" onerror="this.src='https://placehold.co/55x55/0d2c54/ffffff?text=YT'">
-      </a>
-    </div>
-
-    <img class="copyright-img" src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/%C2%A9%202025%20OMAGNA%20SIHANOUKVILLE.png" alt="Hak cipta 2025 OMAGNA.INK SHANOUKVILLE" width="220" height="23" loading="lazy" onerror="this.src='https://placehold.co/220x23/0d2c54/ffffff?text=Copyright'">
-  </footer>
-</main>
+  </main>
 </body>
 </html>

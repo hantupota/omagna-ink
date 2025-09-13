@@ -1,0 +1,34 @@
+{
+  "name": "Omagna Ink Studio",
+  "short_name": "Omagna Ink",
+  "description": "Omagna Ink: World-class tattoo and piercing studio with expert artists in Cambodia and Indonesia. Experience the international standard of hygiene, materials, and artistry.",
+  "lang": "en-US",
+  "dir": "auto",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#8936FF",
+  "background_color": "#2EC6FE",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/omagnaink/image/upload/w_512,h_512,c_fit,f_png/v1750325331/android-chrome-512x512.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://res.cloudinary.com/omagnaink/image/upload/w_512,h_512,c_fit,f_png/v1750325331/icon512_maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://res.cloudinary.com/omagnaink/image/upload/w_512,h_512,c_fit,f_png/v1750325331/icon512_rounded.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "prefer_related_applications": false
+}

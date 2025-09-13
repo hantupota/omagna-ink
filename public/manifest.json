@@ -1,0 +1,53 @@
+{
+  "name": "Omagna Ink: A Sanctuary for Your Story",
+  "short_name": "Omagna Ink",
+  "description": "Enter the sanctuary where ink becomes scripture. A master-certified, sterile space to forge your story onto skin across Southeast Asia.",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#b91c1c",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Choose Your Alchemist",
+      "short_name": "The Coven",
+      "description": "Meet the masters and begin the ritual",
+      "url": "/#artists",
+      "icons": [{ "src": "/icons/shortcut-book.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Witness the Confessions",
+      "short_name": "Confessions",
+      "description": "Explore our museum of living art and stories",
+      "url": "/#gallery",
+      "icons": [{ "src": "/icons/shortcut-gallery.png", "sizes": "192x192" }]
+    }
+  ]
+}

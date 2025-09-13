@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
+<title>PWAOmagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
 <meta name="description" content="Omagna Ink adalah studio tato & tindik profesional di Sihanoukville, Poipet, Jakarta, dan Chrey Thum. Kami spesialis dalam seni tato kustom, geometric, blackwork, dan tradisional." />
 <meta name="author" content="OMAGNA.INK">
 <meta name="keywords" content="omagna ink, tato profesional, tindik, piercing, studio tato, sihanoukville, poipet, jakarta, chrey thum, komunitas tato, seni tato">
@@ -77,13 +77,13 @@
 
 <!-- Meta PWA dan Service Worker -->
 <meta name="theme-color" content="#b91c1c" />
-<link rel="manifest" href="public/manifest.json" />
+<link rel="manifest" href="/public/manifest.json" />
 
 <!-- Pastikan Service Worker terdaftar -->
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('public/sw.js')
+      navigator.serviceWorker.register('/public/sw.js')
         .then(reg => console.log('Service Worker terdaftar:', reg.scope))
         .catch(err => console.error('Service Worker gagal mendaftar:', err));
     });
@@ -228,7 +228,7 @@ a.link:active {transform: translateY(2px)}
 
 /*===== Bagian Lokasi & Layanan Baru =====*/
 .info-section {
-  margin-top: 25px;
+  margin-top: 40px; /* Disesuaikan agar turun satu baris */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -412,7 +412,7 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
     <div class="location-card-container">
       <a class="location-card" href="https://maps.app.goo.gl/NVwdDW1pXoH2RyUV7" title="Tattoo Studio And Piercing Sihanoukville" target="_blank" rel="noopener noreferrer">
         <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/loc2.png" alt="lokasi Omagna Ink Tattoo Studio And Piercing Sihanoukville" width="50" height="50" loading="lazy" onerror="this.src='https://placehold.co/50x50/0d2c54/ffffff?text=LOC'">
-        <span>Tattoo Studio Piercing Sihanoukville</span>
+        <span>Tattoo Studio And Piercing Sihanoukville</span>
       </a>
       <a class="location-card" href="https://maps.app.goo.gl/JQosKTyVBayL69TL6" title="Tattoo Studio Poipet" target="_blank" rel="noopener noreferrer">
         <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/loc2.png" alt="lokasi Omagna Ink Tattoo Studio Poipet" width="50" height="50" loading="lazy" onerror="this.src='https://placehold.co/50x50/0d2c54/ffffff?text=LOC'">
@@ -428,6 +428,12 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
       </a>
     </div>
   </div>
+  
+  <!-- Lokasi -->
+  <a class="loc" href="https://maps.app.goo.gl/X3QNBRPypLovY6xF9?g_st=ipc&utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Lokasi Omagna Ink Sihanoukville Tattoo Studio And Piercing KPS">
+    <img src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/loc2.png" alt="ikon lokasi" width="65" height="65" loading="lazy" onerror="this.src='https://placehold.co/65x65/0d2c54/ffffff?text=LOC'">
+    <div>OMAGNA INK KPS LOCATION</div>
+  </a>
 
   <!-- Footer + Sosial Media -->
   <footer role="contentinfo">

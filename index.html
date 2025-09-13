@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
+<title>PWAOmagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
 <meta name="description" content="Omagna Ink adalah studio tato & tindik profesional di Sihanoukville, Poipet, Jakarta, dan Chrey Thum. Kami spesialis dalam seni tato kustom, geometric, blackwork, dan tradisional." />
 <meta name="author" content="OMAGNA.INK">
 <meta name="keywords" content="omagna ink, tato profesional, tindik, piercing, studio tato, sihanoukville, poipet, jakarta, chrey thum, komunitas tato, seni tato">
@@ -73,6 +73,21 @@
   ],
   "serviceType": ["Tattoo Studio", "Piercing Shop"]
 }
+</script>
+
+<!-- Meta PWA dan Service Worker -->
+<meta name="theme-color" content="#b91c1c" />
+<link rel="manifest" href="public/manifest.json" />
+
+<!-- Pastikan Service Worker terdaftar -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('public/sw.js')
+        .then(reg => console.log('Service Worker terdaftar:', reg.scope))
+        .catch(err => console.error('Service Worker gagal mendaftar:', err));
+    });
+  }
 </script>
 
 <style>

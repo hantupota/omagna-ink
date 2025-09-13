@@ -1,116 +1,120 @@
-// KOSMARA CACHE ENGINE v3.0
-// "Offline is the new luxury." - A compiler, probably.
-// Penjaga Gaib ini memastikan ritual tidak akan pernah terganggu.
+// KOSMARA CACHE ENGINE v3.1
+// "Offline is the new luxury." – A compiler, probably.
+// Menjaga agar aplikasi tetap hidup walau koneksi terputus.
 
-const CACHE_NAME = 'omagna-ink-cache-v3.0';
+const CACHE_NAME = 'omagna-ink-cache-v3.1';
 const CLOUDINARY_CACHE_NAME = 'omagna-cloudinary-cache-v1.1';
 const GOOGLE_FONTS_CACHE_NAME = 'omagna-google-fonts-cache-v1.1';
 
-// Aset inti yang membangun gereja digital ini.
-// Diperluas untuk mencakup semua ikon suci dari manifest.
+// Aset inti (app shell) untuk precache
 const PRECACHE_ASSETS = [
   '/',
-  '/index.html', // Alias untuk '/'
+  '/index.html',
   '/manifest.json',
   '/favicon.ico',
   'https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_400/v1750615239/omagnaink-logo2025-transparant.png',
-  // Ikon-ikon suci untuk PWA & Shortcuts
   '/icons/icon-192x192.png',
   '/icons/icon-512x512.png',
   '/icons/shortcut-book.png',
   '/icons/shortcut-gallery.png'
 ];
 
+// Instalasi service worker & precache
 self.addEventListener('install', event => {
-  console.log('[SW] The Gatekeeper awakens. Installing...');
+  console.log('[SW] Install: memulai precache.');
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      console.log('[SW] Precaching the app shell. Forging the first line of defense.');
-      return cache.addAll(PRECACHE_ASSETS);
-    })
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.addAll(PRECACHE_ASSETS);
+    })()
   );
   self.skipWaiting();
 });
 
+// Aktivasi & hapus cache lama
 self.addEventListener('activate', event => {
-  console.log('[SW] The Gatekeeper is now active. Purging the old world...');
-  // Hapus semua cache lama yang tidak relevan. Buang masa lalu.
+  console.log('[SW] Activate: membersihkan cache lama.');
   const currentCaches = [CACHE_NAME, CLOUDINARY_CACHE_NAME, GOOGLE_FONTS_CACHE_NAME];
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (!currentCaches.includes(cacheName)) {
-            console.log('[SW] Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
+    (async () => {
+      const names = await caches.keys();
+      await Promise.all(
+        names.map(name => {
+          if (!currentCaches.includes(name)) {
+            console.log('[SW] Menghapus cache lama:', name);
+            return caches.delete(name);
           }
         })
       );
-    })
+    })()
   );
-  return self.clients.claim();
+  self.clients.claim();
 });
 
+// Strategi fetch
 self.addEventListener('fetch', event => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Strategi #1: Cloudinary Images (Cache-First, then network)
-  // Gambar-gambar ini abadi. Sekali diambil, simpan selamanya.
+  // 1. Cloudinary Images (Cache First)
   if (url.hostname === 'res.cloudinary.com') {
-    event.respondWith(
-      caches.open(CLOUDINARY_CACHE_NAME).then(cache => {
-        return cache.match(request).then(cachedResponse => {
-          const fetchPromise = fetch(request).then(networkResponse => {
-            if (networkResponse.ok) {
-              cache.put(request, networkResponse.clone());
-            }
-            return networkResponse;
-          });
-          // Kembalikan dari cache jika ada, jika tidak, ambil dari jaringan.
-          return cachedResponse || fetchPromise;
-        });
-      })
-    );
+    event.respondWith(cacheFirst(request, CLOUDINARY_CACHE_NAME));
     return;
   }
 
-  // Strategi #2: Google Fonts (Stale-While-Revalidate)
-  // Font harus cepat, tapi juga harus update. Ini jalan tengahnya.
+  // 2. Google Fonts (Stale-While-Revalidate)
   if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
-    event.respondWith(
-      caches.open(GOOGLE_FONTS_CACHE_NAME).then(cache => {
-        return cache.match(request).then(cachedResponse => {
-          const fetchPromise = fetch(request).then(networkResponse => {
-            cache.put(request, networkResponse.clone());
-            return networkResponse;
-          });
-          // Kembalikan dari cache dulu, baru update di belakang layar.
-          return cachedResponse || fetchPromise;
-        });
-      })
-    );
+    event.respondWith(staleWhileRevalidate(request, GOOGLE_FONTS_CACHE_NAME));
     return;
   }
-  
-  // Strategi #3: Navigasi & Aset Lainnya (Network-First, fallback to Cache)
-  // Selalu coba jaringan dulu, kalau gagal (offline), baru ambil dari cache.
-  // Ini memastikan user dapat versi terbaru jika online.
-  event.respondWith(
-    fetch(request)
-      .then(response => {
-        // Jika berhasil, clone dan simpan di cache untuk kunjungan berikutnya.
-        if (response.ok) {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
-        }
-        return response;
-      })
-      .catch(() => {
-        // Jika jaringan gagal, berikan fallback dari cache.
-        return caches.match(request).then(cachedResponse => {
-          return cachedResponse || caches.match('/index.html');
-        });
-      })
-  );
+
+  // 3. Default (Network First, fallback ke cache)
+  event.respondWith(networkFirst(request, CACHE_NAME));
 });
+
+// ===== Helper Functions =====
+
+// Cache-First: gunakan cache bila tersedia, jika tidak ambil dari network
+async function cacheFirst(request, cacheName) {
+  const cache = await caches.open(cacheName);
+  const cached = await cache.match(request);
+  if (cached) return cached;
+  try {
+    const networkResp = await fetch(request);
+    if (networkResp.ok) cache.put(request, networkResp.clone());
+    return networkResp;
+  } catch (err) {
+    console.error('[SW] cacheFirst error:', err);
+    throw err;
+  }
+}
+
+// Stale-While-Revalidate: tampilkan cache dulu, lalu update di belakang layar
+async function staleWhileRevalidate(request, cacheName) {
+  const cache = await caches.open(cacheName);
+  const cached = await cache.match(request);
+  const networkFetch = fetch(request)
+    .then(resp => {
+      if (resp.ok) cache.put(request, resp.clone());
+      return resp;
+    })
+    .catch(err => {
+      console.warn('[SW] staleWhileRevalidate network error:', err);
+      return cached; // fallback ke cache jika network gagal
+    });
+  return cached || networkFetch;
+}
+
+// Network-First: selalu coba dari network, fallback ke cache jika offline
+async function networkFirst(request, cacheName) {
+  const cache = await caches.open(cacheName);
+  try {
+    const networkResp = await fetch(request);
+    if (networkResp.ok) cache.put(request, networkResp.clone());
+    return networkResp;
+  } catch (err) {
+    console.warn('[SW] networkFirst offline, fallback ke cache:', err);
+    const cached = await cache.match(request);
+    return cached || cache.match('/index.html');
+  }
+}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>cOMAGNA INK: Studio Tato & Tindik Profesional | Sihanoukville, Poipet, Jakarta</title>
+<title>responsif OMAGNA INK: Studio Tato & Tindik Profesional | Sihanoukville, Poipet, Jakarta</title>
 <meta name="description" content="OMAGNA INK adalah studio tato & tindik profesional di Sihanoukville, Poipet, Jakarta, dan Chrey Thum. Jelajahi portofolio kami, bergabung dengan komunitas, dan pesan janji temu Anda.">
 <meta name="author" content="OMAGNA.INK">
 <meta name="keywords" content="omagna ink, tato profesional, tindik, piercing, studio tato, sihanoukville, poipet, jakarta, chrey thum, komunitas tato, seni tato">
@@ -78,72 +78,35 @@
   --btn-radius: 16px;
   --left-width: 120px;
   --icon-circle: 130px;
+  --safe-max: 500px;
 }
 
 /*===== Gaya Dasar & Optimalisasi Global =====*/
 * {box-sizing: border-box; margin: 0; padding: 0}
 html, body {height: 100%}
-
-/* Kontainer utama untuk rasio 9:16, responsif, dan terpusat */
 body {
-  background-color: var(--bg-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  min-height: 100vh;
-  position: relative;
   font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  overflow: hidden;
-  overscroll-behavior: contain;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.wrap {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  max-width: calc(100vh * 9 / 16);
-  height: auto;
-  min-height: 100vh;
-  aspect-ratio: 9 / 16;
-  margin: 0 auto;
-  text-align: center;
   background-color: var(--bg-light);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 16px 30px;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  padding: 0 16px 30px; /* Padding atas dihilangkan untuk menaikkan logo */
+  min-height: 100vh; position: relative; overscroll-behavior: contain;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
-/* Lapisan Latar Belakang (sekarang sebagai pseudo-element) */
-.wrap::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+/* Lapisan Latar Belakang */
+.bg-layer {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
   background: url('https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/bg2.png') no-repeat top center/contain;
   pointer-events: none;
-  opacity: 0.2; /* Menambahkan sedikit transparansi agar lebih halus */
 }
-
-/* Overlay gradien (juga sebagai pseudo-element) */
-.wrap::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+.gradient-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
   background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 40%, rgba(255,255,255,0.1) 100%);
   pointer-events: none;
+}
+.wrap {
+  position: relative; z-index: 10; width: 100%; max-width: var(--safe-max);
+  margin: 0 auto; text-align: center;
 }
 
 /*===== Header & Logo =====*/
@@ -153,10 +116,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 0;
-  margin-bottom: clamp(10px, 2vw, 20px); /* Menggunakan clamp untuk jarak yang responsif */
-  position: relative;
-  z-index: 2;
-  padding-top: clamp(20px, 5vw, 40px); /* Jarak dari atas */
+  margin-bottom: 20px;
 }
 .text-block {
   display: flex;
@@ -166,87 +126,49 @@ body {
 }
 
 .logo {
-  margin-bottom: clamp(5px, 1.5vw, 10px); /* Kurangi jarak antara logo dan teks */
+  margin-bottom: 5px; /* Kurangi jarak antara logo dan teks */
 }
 .logo img {
-  width: clamp(200px, 60vw, 280px); /* Ukuran logo responsif */
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  transition: transform 0.3s ease;
-  border-radius: 8px;
+  width: 280px; max-width: 90%; height: auto; display: block; margin: 0 auto;
+  transition: transform 0.3s ease; border-radius: 8px;
 }
 .logo img:hover {transform: scale(1.02)}
 
 .welcome-sm {
-  font-size: clamp(12px, 2.5vw, 14px); /* Menggunakan clamp untuk ukuran font */
-  color: var(--text-dark);
-  letter-spacing: 1.5px;
-  font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  font-size: 14px; color: var(--text-dark); letter-spacing: 1.5px;
+  font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 .title {
-  font-size: clamp(18px, 4vw, 22px); /* Menggunakan clamp untuk ukuran font */
-  font-weight: 800;
-  color: var(--text-dark);
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  margin: 0; 
-  line-height: 1.2;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 5px;
+  font-size: 22px; font-weight: 800; color: var(--text-dark); letter-spacing: 1.2px;
+  text-transform: uppercase; margin: 0; 
+  line-height: 1.2; text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 5px;
 }
 
 /*===== Komponen Tombol =====*/
 .btns {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(10px, 3vw, 15px); /* Menggunakan clamp untuk jarak */
-  margin-top: clamp(15px, 4vw, 20px);
-  padding: 0 10px;
-  position: relative;
-  z-index: 2;
+  display: flex; flex-direction: column; gap: 15px; margin-top: 15px; padding: 0 10px;
 }
 a.link {
-  display: flex;
-  align-items: stretch;
-  height: var(--btn-height);
-  border-radius: var(--btn-radius);
-  position: relative;
-  text-decoration: none;
-  min-width: 100%;
-  transition: transform 120ms ease;
+  display: flex; align-items: stretch; height: var(--btn-height); border-radius: var(--btn-radius);
+  position: relative; text-decoration: none; min-width: 100%; transition: transform 120ms ease;
 }
 .left {
-  width: var(--left-width);
-  min-width: var(--left-width);
+  width: var(--left-width); min-width: var(--left-width);
   background: linear-gradient(180deg, var(--panel-white), var(--tab-white));
-  border-top-left-radius: var(--btn-radius);
-  border-bottom-left-radius: var(--btn-radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 3;
+  border-top-left-radius: var(--btn-radius); border-bottom-left-radius: var(--btn-radius);
+  display: flex; align-items: center; justify-content: center; position: relative; z-index: 3;
   box-shadow: 8px 10px 18px rgba(6,34,66,0.06), -4px -4px 10px rgba(255,255,255,0.9);
 }
 .icon-circle {
-  width: clamp(70px, 15vw, 130px); /* Ukuran ikon responsif */
-  height: clamp(70px, 15vw, 130px);
-  border-radius: 50%;
+  width: var(--icon-circle); height: var(--icon-circle); border-radius: 50%;
   background: linear-gradient(180deg, var(--panel-white), var(--tab-white));
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   box-shadow: inset 3px 4px 8px rgba(6,34,66,0.08), inset -4px -4px 10px rgba(255,255,255,0.95);
   transition: all 0.3s ease;
 }
 .icon-circle img {
-  width: clamp(55px, 12vw, 85px);
-  height: clamp(55px, 12vw, 85px);
+  width: 85px; height: 85px;
   object-fit: contain;
   filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
 }
@@ -257,51 +179,32 @@ a.link:hover .icon-circle {
 .right {
   flex: 1;
   background: linear-gradient(180deg, var(--navy-1), var(--navy-2));
-  border-top-right-radius: var(--btn-radius);
-  border-bottom-right-radius: var(--btn-radius);
-  display: flex;
-  align-items: center;
-  padding-left: clamp(10px, 4vw, 20px);
-  padding-right: clamp(10px, 4vw, 15px);
-  position: relative;
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  font-size: clamp(12px, 3vw, 14px);
-  z-index: 2;
+  border-top-right-radius: var(--btn-radius); border-bottom-right-radius: var(--btn-radius);
+  display: flex; align-items: center; padding-left: 20px; padding-right: 15px;
+  position: relative; color: #fff; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; font-size: 14px; z-index: 2;
   box-shadow: 0 6px 0 rgba(6,34,66,0.44);
 }
 .right::before {
-  content: '';
-  position: absolute;
-  left: -30px;
-  top: 0;
-  height: 100%;
-  width: 45px;
+  content: ''; position: absolute; left: -30px; top: 0; height: 100%; width: 45px;
   background: linear-gradient(180deg, var(--navy-1), var(--navy-2));
-  transform: skewX(-22deg);
-  z-index: 4;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+  transform: skewX(-22deg); z-index: 4; border-top-left-radius: 6px; border-bottom-left-radius: 6px;
 }
 a.link:hover .right {transform: translateY(-3px); box-shadow: 0 10px 0 rgba(6,34,66,0.18)}
 a.link:active {transform: translateY(2px)}
 
 /*===== Bagian Lokasi & Layanan Baru =====*/
 .info-section {
-  margin-top: clamp(15px, 4vw, 25px);
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
-  z-index: 2;
 }
 
 .info-section h2 {
-  font-size: clamp(14px, 3vw, 16px);
+  font-size: 16px;
   color: var(--text-dark);
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -317,78 +220,78 @@ a.link:active {transform: translateY(2px)}
 .info-section ul li {
   color: var(--text-dark);
   font-weight: 500;
-  font-size: clamp(12px, 2vw, 14px);
+  font-size: 14px;
   line-height: 1.6;
 }
 
 /*===== Lokasi & Footer =====*/
 .loc {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  height: 70px;
-  border-radius: 32px;
-  background: var(--panel-white);
-  color: var(--navy-1);
-  font-weight: 700;
-  letter-spacing: 1.2px;
+  display: flex; align-items: center; justify-content: center; gap: 10px; height: 70px;
+  border-radius: 32px; background: var(--panel-white); color: var(--navy-1);
+  font-weight: 700; letter-spacing: 1.2px;
   box-shadow: 8px 10px 20px rgba(6,34,66,0.06), -4px -4px 10px rgba(255,255,255,0.9);
-  text-transform: uppercase;
-  margin-top: clamp(15px, 4vw, 25px);
-  padding: 0 20px;
-  font-size: clamp(12px, 3vw, 14px);
-  transition: all 0.3s ease;
-  text-decoration: none;
-  position: relative;
-  z-index: 2;
+  text-transform: uppercase; margin-top: 15px; padding: 0 20px; font-size: 14px;
+  transition: all 0.3s ease; text-decoration: none;
 }
-.loc img {
-  width: clamp(50px, 12vw, 65px);
-  height: clamp(50px, 12vw, 65px);
-}
+.loc img {width: 65px; height: 65px}
 .loc:hover {transform: translateY(-2px); box-shadow: 10px 12px 22px rgba(6,34,66,0.08), -4px -4px 10px rgba(255,255,255,0.9)}
 
-footer {
-  margin-top: clamp(25px, 6vw, 35px);
-  position: relative;
-  z-index: 2;
-}
-.footer-socials {display: flex; align-items: center; justify-content: center; gap: clamp(16px, 4vw, 24px)}
+footer {margin-top: 35px}
+.footer-socials {display: flex; align-items: center; justify-content: center; gap: 24px}
 .social {
-  width: clamp(60px, 12vw, 80px);
-  height: clamp(60px, 12vw, 80px);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--navy-1);
-  border: 3px solid var(--panel-white);
+  width: 80px; height: 80px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: var(--navy-1); border: 3px solid var(--panel-white);
   box-shadow: 0 4px 12px rgba(6,34,66,0.15), 0 2px 4px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
 }
 .social img {
-  width: clamp(40px, 8vw, 55px);
-  height: clamp(40px, 8vw, 55px);
+  width: 55px; height: 55px;
   filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,0.2));
-  z-index: 2;
-  position: relative;
-  transition: transform 0.3s ease;
+  z-index: 2; position: relative; transition: transform 0.3s ease;
 }
 .social:hover {transform: translateY(-4px) scale(1.1); background: var(--navy-2)}
 .social:hover img {transform: scale(1.15)}
-.copyright-img {margin-top: clamp(15px, 4vw, 25px); width: clamp(150px, 40vw, 220px); display: block; margin-left: auto; margin-right: auto; opacity: .95}
+.copyright-img {margin-top: 25px; width: 220px; display: block; margin-left: auto; margin-right: auto; opacity: .95}
 
 /*===== Fokus Aksesibilitas =====*/
 a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; border-radius: 16px}
 .loc:focus-visible, .social:focus-visible {border-radius: 9999px}
+
+/*===== Responsif untuk Mobile-First Design =====*/
+@media(max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .welcome-sm, .title {
+    margin: 0;
+  }
+  .logo {
+    margin-bottom: 5px;
+  }
+  body { padding-top: 0; } 
+  .icon-circle{width:110px;height:110px}
+  .icon-circle img{width:75px;height:75px}
+  .social{width:70px;height:70px}
+  .social img{width:45px;height:45px}
+  .loc img{width:55px;height:55px}
+}
+@media(max-width: 400px) {
+  body { padding-top: 0; } 
+  .icon-circle{width:95px;height:95px}
+  .icon-circle img{width:65px;height:65px}
+  .social{width:60px;height:60px}
+  .social img{width:40px;height:40px}
+  .loc img{width:48px;height:48px}
+}
 </style>
 </head>
 <body>
-<div class="wrap" role="main">
-  <!-- Konten di dalam container 9:16 -->
+<div class="bg-layer" aria-hidden="true"></div>
+<div class="gradient-overlay" aria-hidden="true"></div>
+
+<main class="wrap" role="main">
   <div class="header-container">
     <div class="logo">
       <img src="https://raw.githubusercontent.com/hantupota/Omagna-Ink-landing-page/refs/heads/main/image/omagnaink-logo2025-transparant.webp" 
@@ -481,6 +384,6 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
 
     <img class="copyright-img" src="https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/%C2%A9%202025%20OMAGNA%20SIHANOUKVILLE.png" alt="Hak cipta 2025 OMAGNA.INK SHANOUKVILLE" width="220" height="23" loading="lazy" onerror="this.src='https://placehold.co/220x23/0d2c54/ffffff?text=Copyright'">
   </footer>
-</div>
+</main>
 </body>
 </html>

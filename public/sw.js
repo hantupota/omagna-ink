@@ -12,7 +12,25 @@ const PRECACHE_ASSETS = [
   '/index.html',
   '/manifest.json',
   '/favicon.ico',
-  'https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_400/v1750615239/omagnaink-logo2025-transparant.png',
+  // URL font, penting untuk precache agar cepat
+  'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap',
+  'https://fonts.gstatic.com/s/montserrat/v25/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2', // Contoh URL WOFF2, ganti dengan yang sesuai
+  'https://fonts.gstatic.com/s/montserrat/v25/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2', // Ganti dengan URL font lainnya
+
+  // URL gambar, diperbarui agar sesuai dengan yang digunakan di HTML
+  'https://raw.githubusercontent.com/hantupota/Omagna-Ink-landing-page/refs/heads/main/image/omagnaink-logo2025-transparant.webp',
+  'https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/bg2.png',
+  'https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/tele.png',
+  'https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/wa.png',
+  'https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/web.png',
+  'https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/fb.png',
+  'https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/ICONS/loc2.png',
+  'https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/IG%20white.png',
+  'https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/tiktok%20white.png',
+  'https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/youtube.png',
+  'https://raw.githubusercontent.com/hantupota/OMAGNA-INK-SIHANOUKVILLE/refs/heads/main/OMAGNALP/footer/%C2%A9%202025%20OMAGNA%20SIHANOUKVILLE.png',
+
+  // Ikon manifest
   '/icons/icon-192x192.png',
   '/icons/icon-512x512.png',
   '/icons/shortcut-book.png',
@@ -57,7 +75,7 @@ self.addEventListener('fetch', event => {
   const url = new URL(request.url);
 
   // 1. Cloudinary Images (Cache First)
-  if (url.hostname === 'res.cloudinary.com') {
+  if (url.hostname === 'res.cloudinary.com' || url.hostname === 'raw.githubusercontent.com') {
     event.respondWith(cacheFirst(request, CLOUDINARY_CACHE_NAME));
     return;
   }
@@ -84,8 +102,10 @@ async function cacheFirst(request, cacheName) {
     if (networkResp.ok) cache.put(request, networkResp.clone());
     return networkResp;
   } catch (err) {
-    console.error('[SW] cacheFirst error:', err);
-    throw err;
+    console.error('[SW] cacheFirst error, fallback ke index:', err);
+    // Jika fetch gagal dan tidak ada di cache, kembali ke halaman offline
+    const offlinePage = await cache.match('/index.html');
+    return offlinePage;
   }
 }
 
@@ -100,7 +120,8 @@ async function staleWhileRevalidate(request, cacheName) {
     })
     .catch(err => {
       console.warn('[SW] staleWhileRevalidate network error:', err);
-      return cached; // fallback ke cache jika network gagal
+      // Jika network gagal, kembalikan dari cache, jika tidak ada, biarkan null
+      return cached; 
     });
   return cached || networkFetch;
 }
@@ -110,11 +131,13 @@ async function networkFirst(request, cacheName) {
   const cache = await caches.open(cacheName);
   try {
     const networkResp = await fetch(request);
+    // Hanya simpan jika respons berhasil
     if (networkResp.ok) cache.put(request, networkResp.clone());
     return networkResp;
   } catch (err) {
     console.warn('[SW] networkFirst offline, fallback ke cache:', err);
     const cached = await cache.match(request);
+    // Jika tidak ada di cache, berikan fallback ke halaman utama
     return cached || cache.match('/index.html');
   }
 }

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OMAGNA INK: Studio Tato Profesional di Sihanoukville</title>
-<meta name="description" content="OMAGNA INK adalah studio tato profesional terkemuka di Sihanoukville, Poipet, dan Jakarta. Jelajahi portofolio kami, bergabung dengan komunitas, dan pesan janji temu Anda.">
+<title>OMAGNA INK: Studio Tato & Tindik Profesional | Sihanoukville, Poipet, Jakarta</title>
+<meta name="description" content="OMAGNA INK adalah studio tato & tindik profesional di Sihanoukville, Poipet, Jakarta, dan Chrey Thum. Jelajahi portofolio kami, bergabung dengan komunitas, dan pesan janji temu Anda.">
 <meta name="author" content="OMAGNA.INK">
-<meta name="keywords" content="omagna ink, tato profesional, studio tato, sihanoukville, poipet, jakarta, komunitas tato, seni tato">
+<meta name="keywords" content="omagna ink, tato profesional, tindik, piercing, studio tato, sihanoukville, poipet, jakarta, chrey thum, komunitas tato, seni tato">
 
 <!-- Memuat font Montserrat untuk tampilan profesional dan konsisten -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,17 +17,9 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "TattooParlor",
-  "name": "OMAGNA INK SHANOUKVILLE",
+  "@type": "LocalBusiness",
+  "name": "OMAGNA INK Professional Tattoo Studio & Piercing Shop",
   "image": "https://raw.githubusercontent.com/hantupota/Omagna-Ink-landing-page/refs/heads/main/image/omagnaink-logo2025-transparant.webp",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Street 28, Village 3, Sangkat 3",
-    "addressLocality": "Sihanoukville",
-    "addressRegion": "Sihanoukville",
-    "postalCode": "18000",
-    "addressCountry": "KH"
-  },
   "url": "https://omagna.ink",
   "telephones": "+85592376291",
   "openingHoursSpecification": [
@@ -42,7 +34,26 @@
     "https://www.instagram.com/omagna.ink",
     "https://www.tiktok.com/@omagna.ink.kps",
     "https://www.facebook.com/omagnainkstudio"
-  ]
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Chrey Thum, Cambodia"
+    },
+    {
+      "@type": "City",
+      "name": "Poipet, Cambodia"
+    },
+    {
+      "@type": "City",
+      "name": "Jakarta, Indonesia"
+    },
+    {
+      "@type": "City",
+      "name": "Sihanoukville, Cambodia"
+    }
+  ],
+  "serviceType": ["Tattoo Studio", "Piercing Shop"]
 }
 </script>
 
@@ -93,7 +104,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 0; /* Diubah: Margin atas menjadi 0 */
+  margin-top: 0;
   margin-bottom: 20px;
 }
 .text-block {
@@ -171,6 +182,37 @@ a.link:hover .icon-circle {
 a.link:hover .right {transform: translateY(-3px); box-shadow: 0 10px 0 rgba(6,34,66,0.18)}
 a.link:active {transform: translateY(2px)}
 
+/*===== Bagian Lokasi & Layanan Baru =====*/
+.info-section {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.info-section h2 {
+  font-size: 16px;
+  color: var(--omagna-blue-dark);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 1.2px;
+}
+
+.info-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-section ul li {
+  color: #5a5a5a;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 /*===== Lokasi & Footer =====*/
 .loc {
   display: flex; align-items: center; justify-content: center; gap: 10px; height: 70px;
@@ -242,11 +284,11 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
   <div class="header-container">
     <div class="logo">
       <img src="https://raw.githubusercontent.com/hantupota/Omagna-Ink-landing-page/refs/heads/main/image/omagnaink-logo2025-transparant.webp" 
-           alt="Logo OMAGNA.INK transparan, melambangkan studio tato profesional di Sihanoukville" width="280" height="120" loading="eager">
+           alt="Logo OMAGNA.INK transparan, melambangkan studio tato dan tindik profesional di berbagai lokasi" width="280" height="120" loading="eager">
     </div>
     <div class="text-block">
       <p class="welcome-sm">WELCOME TO</p>
-      <h1 class="title">OMAGNA INK SHANOUKVILLE</h1>
+      <h1 class="title">OMAGNA INK</h1>
     </div>
   </div>
 
@@ -296,7 +338,17 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
       </div>
       <div class="right"><span>FACEBOOK OFFICIAL OMAGNA</span></div>
     </a>
+  </div>
 
+  <!-- Lokasi Studio -->
+  <div class="info-section">
+    <h2>LOKASI STUDIO</h2>
+    <ul>
+      <li>Chrey Thum, Cambodia</li>
+      <li>Poipet, Cambodia</li>
+      <li>Jakarta, Indonesia</li>
+      <li>Sihanoukville, Cambodia</li>
+    </ul>
   </div>
   
   <!-- Lokasi -->

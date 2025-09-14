@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
+<title>YES Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
 <meta name="description" content="Omagna Ink adalah studio tato & tindik profesional di Sihanoukville, Poipet, Jakarta, dan Chrey Thum. Kami spesialis dalam seni tato kustom, geometric, blackwork, dan tradisional." />
 <meta name="author" content="OMAGNA.INK">
 <meta name="keywords" content="omagna ink, tato profesional, tindik, piercing, studio tato, sihanoukville, poipet, jakarta, chrey thum, komunitas tato, seni tato">
@@ -73,7 +73,7 @@
 <meta name="theme-color" content="#b91c1c" />
 <link rel="manifest" href="/public/manifest.json" />
 
-<!-- REVISI: Mengganti URL preload font ke versi yang Anda berikan untuk memperbaiki error 404. -->
+<!-- Preload font dan gambar penting -->
 <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v26/JTUQjIg1_i6t8kCHKm459WxRxC7mw9c.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- Pastikan Service Worker terdaftar -->
@@ -126,13 +126,15 @@ body {
 /* Lapisan Latar Belakang */
 .bg-layer {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
-  background: url('https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_480/v1757842560/bg2.webp') no-repeat top center/contain;
+  background: url('https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_480/v1757842560/bg2.webp') no-repeat top center/cover;
   pointer-events: none;
+  will-change: transform; /* Mengoptimalkan animasi */
 }
 .gradient-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
   background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 40%, rgba(255,255,255,0.1) 100%);
   pointer-events: none;
+  will-change: transform; /* Mengoptimalkan animasi */
 }
 .wrap {
   position: relative; z-index: 10; width: 100%; max-width: var(--safe-max);
@@ -163,9 +165,8 @@ body {
   height: auto;  
   display: block;  
   margin: 0 auto;
-  /* OPTIMASI: Transisi hanya pada 'transform' & beri tahu browser untuk bersiap */
   transition: transform 0.3s ease;
-  will-change: transform;
+  will-change: transform; /* Mengoptimalkan animasi */
   border-radius: 8px;
 }
 .logo img:hover {transform: scale(1.02)}
@@ -188,9 +189,8 @@ body {
 a.link {
   display: flex; align-items: stretch; height: var(--btn-height); border-radius: var(--btn-radius);
   position: relative; text-decoration: none; min-width: 100%;
-  /* OPTIMASI: Transisi hanya pada 'transform' yang efisien */
   transition: transform 120ms ease;
-  will-change: transform;
+  will-change: transform; /* Mengoptimalkan animasi */
 }
 .left {
   width: var(--left-width); min-width: var(--left-width);
@@ -199,18 +199,15 @@ a.link {
   display: flex; align-items: center; justify-content: center; position: relative; z-index: 3;
   box-shadow: 8px 10px 18px rgba(6,34,66,0.06), -4px -4px 10px rgba(255,255,255,0.9);
 }
+.icon-circle {
+  will-change: transform; /* Mengoptimalkan animasi */
+}
 .icon-circle img {
   width: 85px; height: 85px;
   object-fit: contain;
   filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
 }
-.icon-circle {
-  /* OPTIMASI: Animasikan properti yang lebih ringan (transform) daripada box-shadow */
-  transition: transform 0.3s ease;
-  will-change: transform;
-}
 a.link:hover .icon-circle {
-  /* Hapus box-shadow inset yang berat, ganti dengan transform yang lebih efisien */
   transform: scale(1.05);
 }
 .right {
@@ -221,16 +218,14 @@ a.link:hover .icon-circle {
   position: relative; color: #fff; font-weight: 700; letter-spacing: 0.8px;
   text-transform: uppercase; font-size: 14px; z-index: 2;
   box-shadow: 0 6px 0 rgba(6,34,66,0.44);
-  /* OPTIMASI: Transisikan transform & box-shadow secara eksplisit, bukan 'all' */
   transition: transform 120ms ease, box-shadow 120ms ease;
-  will-change: transform, box-shadow;
+  will-change: transform, box-shadow; /* Mengoptimalkan animasi */
 }
 .right::before {
   content: ''; position: absolute; left: -30px; top: 0; height: 100%; width: 45px;
   background: linear-gradient(180deg, var(--navy-1), var(--navy-2));
   transform: skewX(-22deg); z-index: 4; border-top-left-radius: 6px; border-bottom-left-radius: 6px;
 }
-/* OPTIMASI: Menghapus transisi box-shadow yang berat dari 'hover' untuk performa lebih baik */
 a.link:hover .right {transform: translateY(-3px);}
 a.link:active {transform: translateY(2px)}
 
@@ -268,9 +263,8 @@ a.link:active {transform: translateY(2px)}
   padding: 15px 20px;
   border-radius: var(--btn-radius);
   box-shadow: 0 6px 15px rgba(6, 34, 66, 0.08), -4px -4px 10px rgba(255, 255, 255, 0.9);
-  /* OPTIMASI: Ganti transisi 'all' dengan 'transform' dan 'box-shadow' */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform, box-shadow;
+  will-change: transform, box-shadow; /* Mengoptimalkan animasi */
   text-decoration: none;
   color: var(--navy-1);
 }
@@ -297,9 +291,8 @@ a.link:active {transform: translateY(2px)}
   font-weight: 700; letter-spacing: 1.2px;
   box-shadow: 8px 10px 20px rgba(6,34,66,0.06), -4px -4px 10px rgba(255,255,255,0.9);
   text-transform: uppercase; margin-top: 15px; padding: 0 20px; font-size: 14px;
-  /* OPTIMASI: Ganti 'all' dengan properti spesifik */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform, box-shadow;
+  will-change: transform, box-shadow; /* Mengoptimalkan animasi */
   text-decoration: none;
 }
 .loc img {width: 65px; height: 65px}
@@ -312,9 +305,8 @@ footer {margin-top: 25px;}
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
   background: var(--navy-1); border: 3px solid var(--panel-white);
   box-shadow: 0 4px 12px rgba(6,34,66,0.15), 0 2px 4px rgba(0,0,0,0.1);
-  /* OPTIMASI: Ganti 'all' dengan properti spesifik */
   transition: transform 0.3s ease, background-color 0.3s ease;
-  will-change: transform;
+  will-change: transform; /* Mengoptimalkan animasi */
   position: relative; overflow: hidden;
 }
 .social img {
@@ -322,13 +314,12 @@ footer {margin-top: 25px;}
   filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,0.2));
   z-index: 2; position: relative;
   transition: transform 0.3s ease;
-  will-change: transform;
+  will-change: transform; /* Mengoptimalkan animasi */
 }
 .social:hover {transform: translateY(-4px) scale(1.1); background: var(--navy-2)}
 .social:hover img {transform: scale(1.15)}
 .copyright-text {
-  /* REVISI: Mengubah warna teks menjadi putih sesuai permintaan */
-  color: var(--panel-white);
+  color: #ffffff; /* Warna putih untuk teks copyright */
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
   font-size: clamp(12px, 3vw, 14px);
   margin-top: 20px;
@@ -376,25 +367,19 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
 <main class="wrap" role="main">
   <div class="header-container">
     <div class="logo">
-      <!-- REVISI: Menambahkan lebih banyak ukuran pada srcset untuk optimasi.
-           Ini memberikan browser pilihan yang lebih granular, memungkinkannya
-           untuk mengunduh gambar yang ukurannya paling mendekati kebutuhan
-           sebenarnya (berdasarkan 'sizes' dan Device Pixel Ratio), sehingga
-           mengurangi pemborosan data dan mencapai potensi penghematan. -->
-      <img
+      <!-- Optimalisasi gambar dengan srcset dan sizes yang lebih tepat -->
+      <img 
         src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_280/v1757842560/omagnaink-logo2025-transparant.webp"
         srcset="
+          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_140/v1757842560/omagnaink-logo2025-transparant.webp 140w,
           https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_280/v1757842560/omagnaink-logo2025-transparant.webp 280w,
           https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_360/v1757842560/omagnaink-logo2025-transparant.webp 360w,
-          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_450/v1757842560/omagnaink-logo2025-transparant.webp 450w,
-          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_560/v1757842560/omagnaink-logo2025-transparant.webp 560w,
-          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_720/v1757842560/omagnaink-logo2025-transparant.webp 720w,
-          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_840/v1757842560/omagnaink-logo2025-transparant.webp 840w
+          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_450/v1757842560/omagnaink-logo2025-transparant.webp 450w
         "
-        sizes="(max-width: 500px) 90vw, 450px"
-        alt="Logo OMAGNA.INK transparan, melambangkan studio tato dan tindik profesional di berbagai lokasi"
-        width="280"
-        height="120"
+        sizes="(max-width: 480px) 90vw, (max-width: 768px) 280px, 450px"
+        alt="Logo OMAGNA.INK transparan, melambangkan studio tato dan tindik profesional di berbagai lokasi" 
+        width="280" 
+        height="120" 
         loading="eager"
         decoding="async">
     </div>
@@ -407,23 +392,47 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
   <!-- Tombol-tombol -->
   <div class="btns" aria-label="Link buttons">
     <a class="link" href="https://t.me/omagnainkgallery?utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Grup Komunitas Telegram Omagna">
-      <div class="left"><div class="icon-circle"><img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/tele.svg" alt="ikon Telegram" width="85" height="85" loading="lazy" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=TG'"></div></div>
+      <div class="left">
+        <div class="icon-circle">
+          <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/tele.svg" alt="ikon Telegram" width="85" height="85" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=TG'">
+        </div>
+      </div>
       <div class="right"><span>KOMUNITAS TELEGRAM OMAGNA</span></div>
     </a>
+
     <a class="link" href="https://t.me/OmagnainkKPS?utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Telegram Official Omagna KPS">
-      <div class="left"><div class="icon-circle"><img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/tele.svg" alt="ikon Telegram" width="85" height="85" loading="lazy" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=TG'"></div></div>
+      <div class="left">
+        <div class="icon-circle">
+          <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/tele.svg" alt="ikon Telegram" width="85" height="85" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=TG'">
+        </div>
+      </div>
       <div class="right"><span>TELEGRAM OFFICIAL OMAGNA KPS</span></div>
     </a>
+
     <a class="link" href="https://wa.me/85592376291?utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp Official Omagna KPS">
-      <div class="left"><div class="icon-circle"><img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/wa.svg" alt="ikon WhatsApp" width="85" height="85" loading="lazy" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=WA'"></div></div>
+      <div class="left">
+        <div class="icon-circle">
+          <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/wa.svg" alt="ikon WhatsApp" width="85" height="85" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=WA'">
+        </div>
+      </div>
       <div class="right"><span>WHATSAPP OFFICIAL OMAGNA KPS</span></div>
     </a>
+
     <a class="link" href="https://www.omagna.ink?utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Website Official Omagna">
-      <div class="left"><div class="icon-circle"><img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/web.svg" alt="ikon situs web" width="85" height="85" loading="lazy" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=WEB'"></div></div>
+      <div class="left">
+        <div class="icon-circle">
+          <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/web.svg" alt="ikon situs web" width="85" height="85" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=WEB'">
+        </div>
+      </div>
       <div class="right"><span>WEBSITE OFFICIAL OMAGNA</span></div>
     </a>
+
     <a class="link" href="https://www.facebook.com/omagnainkstudio/?utm_source=tiktok&utm_medium=cpc&utm_campaign=omagna_lp" target="_blank" rel="noopener noreferrer" aria-label="Facebook Official Omagna">
-      <div class="left"><div class="icon-circle"><img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/fb.svg" alt="ikon Facebook" width="85" height="85" loading="lazy" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=FB'"></div></div>
+      <div class="left">
+        <div class="icon-circle">
+          <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/fb.svg" alt="ikon Facebook" width="85" height="85" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/85x85/0d2c54/ffffff?text=FB'">
+        </div>
+      </div>
       <div class="right"><span>FACEBOOK OFFICIAL OMAGNA</span></div>
     </a>
   </div>
@@ -433,19 +442,19 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
     <h2>LOKASI KAMI</h2>
     <div class="location-card-container">
       <a class="location-card" href="https://maps.app.goo.gl/NVwdDW1pXoH2RyUV7" title="Arah ke studio Omagna Ink di Sihanoukville" target="_blank" rel="noopener noreferrer">
-        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_50/v1757842560/loc2.svg" alt="Studio tato Omagna Ink di Sihanoukville" width="50" height="50" loading="lazy" onerror="this.src='https://placehold.co/50x50/0d2c54/ffffff?text=LOC'">
+        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_50/v1757842560/loc2.svg" alt="Studio tato Omagna Ink di Sihanoukville" width="50" height="50" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/50x50/0d2c54/ffffff?text=LOC'">
         <span>Sihanoukville, Cambodia</span>
       </a>
       <a class="location-card" href="https://maps.app.goo.gl/JQosKTyVBayL69TL6" title="Arah ke studio Omagna Ink di Poipet" target="_blank" rel="noopener noreferrer">
-        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_50/v1757842560/loc2.svg" alt="Studio tato Omagna Ink di Poipet" width="50" height="50" loading="lazy" onerror="this.src='https://placehold.co/50x50/0d2c54/ffffff?text=LOC'">
+        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_50/v1757842560/loc2.svg" alt="Studio tato Omagna Ink di Poipet" width="50" height="50" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/50x50/0d2c54/ffffff?text=LOC'">
         <span>Poipet, Cambodia</span>
       </a>
       <a class="location-card" href="https://maps.app.goo.gl/dQ2qyLZn1NThT1v78" title="Arah ke studio Omagna Ink di Chrey Thum" target="_blank" rel="noopener noreferrer">
-        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_50/v1757842560/loc2.svg" alt="Studio tato Omagna Ink di Chrey Thum" width="50" height="50" loading="lazy" onerror="this.src='https://placehold.co/50x50/0d2c54/ffffff?text=LOC'">
+        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_50/v1757842560/loc2.svg" alt="Studio tato Omagna Ink di Chrey Thum" width="50" height="50" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/50x50/0d2c54/ffffff?text=LOC'">
         <span>Chrey Thum, Cambodia</span>
       </a>
       <a class="location-card" href="https://maps.app.goo.gl/76MAEMZ9ERXCNrX18" title="Arah ke studio Omagna Ink di Jakarta" target="_blank" rel="noopener noreferrer">
-        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_50/v1757842560/loc2.svg" alt="Studio tato Omagna Ink di Jakarta" width="50" height="50" loading="lazy" onerror="this.src='https://placehold.co/50x50/0d2c54/ffffff?text=LOC'">
+        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_50/v1757842560/loc2.svg" alt="Studio tato Omagna Ink di Jakarta" width="50" height="50" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/50x50/0d2c54/ffffff?text=LOC'">
         <span>Jakarta, Indonesia</span>
       </a>
     </div>
@@ -455,13 +464,13 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
   <footer>
     <div class="footer-socials" aria-label="Sosial media">
       <a class="social" href="https://www.instagram.com/omagna.ink?igsh=anFpZTY2NXk0ejc4&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram Omagna">
-        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_55/v1757842560/IG.svg" alt="ikon Instagram" width="55" height="55" loading="lazy" onerror="this.src='https://placehold.co/55x55/0d2c54/ffffff?text=IG'">
+        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_55/v1757842560/IG.svg" alt="ikon Instagram" width="55" height="55" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/55x55/0d2c54/ffffff?text=IG'">
       </a>
       <a class="social" href="https://www.tiktok.com/@omagna.ink.kps?_t=ZS-8zfSXyoIz7V&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok Omagna">
-        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_55/v1757842560/tiktok.svg" alt="ikon TikTok" width="55" height="55" loading="lazy" onerror="this.src='https://placehold.co/55x55/0d2c54/ffffff?text=TT'">
+        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_55/v1757842560/tiktok.svg" alt="ikon TikTok" width="55" height="55" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/55x55/0d2c54/ffffff?text=TT'">
       </a>
       <a class="social" href="https://www.youtube.com/@omagnaink" target="_blank" rel="noopener noreferrer" aria-label="YouTube Omagna">
-        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_55/v1757842560/youtube.svg" alt="ikon YouTube" width="55" height="55" loading="lazy" onerror="this.src='https://placehold.co/55x55/0d2c54/ffffff?text=YT'">
+        <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_55/v1757842560/youtube.svg" alt="ikon YouTube" width="55" height="55" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/55x55/0d2c54/ffffff?text=YT'">
       </a>
     </div>
     

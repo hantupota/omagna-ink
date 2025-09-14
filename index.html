@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
+<title>PRO Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
 <meta name="description" content="Omagna Ink adalah studio tato & tindik profesional di Sihanoukville, Poipet, Jakarta, dan Chrey Thum. Kami spesialis dalam seni tato kustom, geometric, blackwork, dan tradisional." />
 <meta name="author" content="OMAGNA.INK">
 <meta name="keywords" content="omagna ink, tato profesional, tindik, piercing, studio tato, sihanoukville, poipet, jakarta, chrey thum, komunitas tato, seni tato">
@@ -327,7 +327,9 @@ footer {margin-top: 25px;}
 .social:hover {transform: translateY(-4px) scale(1.1); background: var(--navy-2)}
 .social:hover img {transform: scale(1.15)}
 .copyright-text {
-  color: var(--navy-1);
+  /* REVISI: Mengubah warna teks menjadi putih sesuai permintaan */
+  color: var(--panel-white);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
   font-size: clamp(12px, 3vw, 14px);
   margin-top: 20px;
   opacity: 0.95;
@@ -374,14 +376,19 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
 <main class="wrap" role="main">
   <div class="header-container">
     <div class="logo">
-      <!-- OPTIMASI: Atribut 'sizes' disesuaikan agar lebih akurat dengan layout.
-           Ini membantu browser memilih gambar yang tepat dari srcset lebih awal,
-           menghemat bandwidth & mempercepat pemuatan. -->
+      <!-- REVISI: Menambahkan lebih banyak ukuran pada srcset untuk optimasi.
+           Ini memberikan browser pilihan yang lebih granular, memungkinkannya
+           untuk mengunduh gambar yang ukurannya paling mendekati kebutuhan
+           sebenarnya (berdasarkan 'sizes' dan Device Pixel Ratio), sehingga
+           mengurangi pemborosan data dan mencapai potensi penghematan. -->
       <img
         src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_280/v1757842560/omagnaink-logo2025-transparant.webp"
         srcset="
           https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_280/v1757842560/omagnaink-logo2025-transparant.webp 280w,
+          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_360/v1757842560/omagnaink-logo2025-transparant.webp 360w,
+          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_450/v1757842560/omagnaink-logo2025-transparant.webp 450w,
           https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_560/v1757842560/omagnaink-logo2025-transparant.webp 560w,
+          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_720/v1757842560/omagnaink-logo2025-transparant.webp 720w,
           https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_840/v1757842560/omagnaink-logo2025-transparant.webp 840w
         "
         sizes="(max-width: 500px) 90vw, 450px"

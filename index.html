@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
+<title>Responsivitas Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
 <meta name="description" content="Omagna Ink adalah studio tato & tindik profesional di Sihanoukville, Poipet, Jakarta, dan Chrey Thum. Kami spesialis dalam seni tato kustom, geometric, blackwork, dan tradisional." />
 <meta name="author" content="OMAGNA.INK">
 <meta name="keywords" content="omagna ink, tato profesional, tindik, piercing, studio tato, sihanoukville, poipet, jakarta, chrey thum, komunitas tato, seni tato">
@@ -139,7 +139,7 @@ body {
   margin: 0 auto; text-align: center;
 }
 
-/*===== Header & Logo =====*/
+/*===== Header & Logo - REVISI UNTUK RESPONSIVITAS =====*/
 .header-container {
   display: flex;
   flex-direction: column;
@@ -147,39 +147,61 @@ body {
   justify-content: center;
   margin-top: 0;
   margin-bottom: 20px;
+  width: 100%;
 }
 .text-block {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 100%;
 }
 
 .logo {
-  margin-bottom: 5px; /* Kurangi jarak antara logo dan teks */
+  margin-bottom: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
 }
 .logo img {
-  max-width: 90%;  
-  height: auto;  
-  display: block;  
+  /* REVISI: Ukuran responsif dengan clamp dan max-width */
+  width: clamp(120px, 60vw, 280px);
+  max-width: 100%;
+  height: auto;
+  display: block;
   margin: 0 auto;
-  /* OPTIMASI CLS: Menyediakan aspect-ratio untuk mencegah layout shift. Disesuaikan menjadi 1/1 untuk logo persegi. */
   aspect-ratio: 1 / 1;
   transition: transform 0.3s ease;
   will-change: transform;
   border-radius: 8px;
+  object-fit: contain;
 }
 .logo img:hover {transform: scale(1.02)}
 
 .welcome-sm {
-  font-size: 14px; color: var(--text-dark); letter-spacing: 1.5px;
-  font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  font-size: clamp(12px, 3.5vw, 14px); /* REVISI: Font responsif */
+  color: var(--text-dark); 
+  letter-spacing: 1.5px;
+  font-weight: 600; 
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  margin-top: 10px;
 }
 .title {
-  font-size: 22px; font-weight: 800; color: var(--text-dark); letter-spacing: 1.2px;
-  text-transform: uppercase; margin: 0;  
-  line-height: 1.2; text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 5px;
+  font-size: clamp(18px, 5vw, 22px); /* REVISI: Font responsif */
+  font-weight: 800; 
+  color: var(--text-dark); 
+  letter-spacing: 1.2px;
+  text-transform: uppercase; 
+  margin: 0;  
+  line-height: 1.2; 
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  padding: 0 5px;
+  width: 100%;
 }
 
 /*===== Komponen Tombol =====*/
@@ -353,6 +375,23 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
   .social{width:70px;height:70px}
   .social img{width:45px;height:45px}
   .loc img{width:55px;height:55px}
+  
+  /* REVISI: Ukuran logo untuk perangkat kecil */
+  .logo img {
+    width: clamp(100px, 50vw, 250px);
+  }
+  
+  /* REVISI: Teks responsif untuk perangkat kecil */
+  .welcome-sm {
+    font-size: clamp(11px, 3vw, 13px);
+  }
+  
+  .title {
+    font-size: clamp(16px, 4.5vw, 20px);
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
 }
 @media(max-width: 400px) {
   body { padding-top: 0; }
@@ -361,6 +400,25 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
   .social{width:60px;height:60px}
   .social img{width:40px;height:40px}
   .loc img{width:48px;height:48px}
+  
+  /* REVISI: Ukuran logo untuk perangkat sangat kecil */
+  .logo img {
+    width: clamp(90px, 45vw, 220px);
+  }
+  
+  /* REVISI: Teks responsif untuk perangkat sangat kecil */
+  .welcome-sm {
+    font-size: clamp(10px, 2.8vw, 12px);
+  }
+  
+  .title {
+    font-size: clamp(14px, 4vw, 18px);
+  }
+  
+  /* REVISI: Mengurangi padding untuk menghemat ruang */
+  .header-container {
+    margin-bottom: 15px;
+  }
 }
 </style>
 </head>
@@ -451,4 +509,3 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
 </main>
 </body>
 </html>
-

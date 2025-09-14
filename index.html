@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SPEED Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
+<title>Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
 <meta name="description" content="Omagna Ink adalah studio tato & tindik profesional di Sihanoukville, Poipet, Jakarta, dan Chrey Thum. Kami spesialis dalam seni tato kustom, geometric, blackwork, dan tradisional." />
 <meta name="author" content="OMAGNA.INK">
 <meta name="keywords" content="omagna ink, tato profesional, tindik, piercing, studio tato, sihanoukville, poipet, jakarta, chrey thum, komunitas tato, seni tato">
@@ -12,13 +12,15 @@
 <meta property="og:title" content="Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta" />
 <meta property="og:description" content="Omagna Ink Studio adalah tempat perlindungan bagi jiwa yang bergejolak. Studio tato & tindik profesional kami di Kamboja (Sihanoukville, Poipet, Chrey Thum) & Jakarta, Indonesia, spesialis dalam seni tato kustom, geometric, blackwork, dan tradisional." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/omagnaink-logo2025-transparant.webp" />
+<meta property="og:image" content="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_1200/v1757842560/omagnaink-logo2025-transparant.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 
 <!-- Twitter Card Tags -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta" />
 <meta name="twitter:description" content="Omagna Ink Studio adalah tempat perlindungan bagi jiwa yang bergejolak. Studio tato & tindik profesional kami di Kamboja (Sihanoukville, Poipet, Chrey Thum) & Jakarta, Indonesia, spesialis dalam seni tato kustom, geometric, blackwork, dan tradisional." />
-<meta name="twitter:image" content="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/omagnaink-logo2025-transparant.webp" />
+<meta name="twitter:image" content="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_1200/v1757842560/omagnaink-logo2025-transparant.webp" />
 
 <!-- Favicon dan Ikon Aplikasi -->
 <link rel="icon" href="https://res.cloudinary.com/klikgrosirbaju-com/image/upload/f_auto,q_auto,w_32/icon-32x32_omagnaink.png" sizes="32x32" />
@@ -41,7 +43,7 @@
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "OMAGNA INK Professional Tattoo Studio & Piercing Shop",
-  "image": "https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_85/v1757842560/omagnaink-logo2025-transparant.webp",
+  "image": "https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_1200/v1757842560/omagnaink-logo2025-transparant.webp",
   "url": "https://omagna.ink",
   "telephones": "+85592376291",
   "openingHoursSpecification": [
@@ -169,8 +171,12 @@ body {
   margin-bottom: 5px; /* Kurangi jarak antara logo dan teks */
 }
 .logo img {
-  width: 280px; max-width: 90%; height: auto; display: block; margin: 0 auto;
-  transition: transform 0.3s ease; border-radius: 8px;
+  max-width: 90%; 
+  height: auto; 
+  display: block; 
+  margin: 0 auto;
+  transition: transform 0.3s ease; 
+  border-radius: 8px;
 }
 .logo img:hover {transform: scale(1.02)}
 
@@ -354,8 +360,20 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
 <main class="wrap" role="main">
   <div class="header-container">
     <div class="logo">
-      <img src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_280/v1757842560/omagnaink-logo2025-transparant.webp"
-           alt="Logo OMAGNA.INK transparan, melambangkan studio tato dan tindik profesional di berbagai lokasi" width="280" height="120" loading="eager">
+      <!-- Optimalisasi gambar dengan srcset dan sizes -->
+      <img 
+        src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_280/v1757842560/omagnaink-logo2025-transparant.webp"
+        srcset="
+          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_280/v1757842560/omagnaink-logo2025-transparant.webp 280w,
+          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_560/v1757842560/omagnaink-logo2025-transparant.webp 560w,
+          https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_840/v1757842560/omagnaink-logo2025-transparant.webp 840w
+        "
+        sizes="(max-width: 400px) 280px, (max-width: 800px) 560px, 840px"
+        alt="Logo OMAGNA.INK transparan, melambangkan studio tato dan tindik profesional di berbagai lokasi" 
+        width="280" 
+        height="120" 
+        loading="eager"
+        decoding="async">
     </div>
     <div class="text-block">
       <p class="welcome-sm">WELCOME TO</p>

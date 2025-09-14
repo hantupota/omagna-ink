@@ -83,7 +83,7 @@
 <!-- Preload font dan gambar penting -->
 <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v25/JTUSjIg1_i6t8kCHKm459Wlhzg.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto/v1757842560/omagnaink-logo2025-transparant.webp" as="image">
-<link rel="preload" href="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto/v1757842560/bg2.webp" as="image">
+<link rel="preload" href="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto/v1757842560/bg2.webp" as="image" fetchpriority="high">
 
 <!-- Pastikan Service Worker terdaftar -->
 <script>
@@ -282,7 +282,7 @@ a.link:active {transform: translateY(2px)}
 .loc {
   display: flex; align-items: center; justify-content: center; gap: 10px; height: 70px;
   border-radius: 32px; background: var(--panel-white); color: var(--navy-1);
-  font-weight: 7-00; letter-spacing: 1.2px;
+  font-weight: 700; letter-spacing: 1.2px;
   box-shadow: 8px 10px 20px rgba(6,34,66,0.06), -4px -4px 10px rgba(255,255,255,0.9);
   text-transform: uppercase; margin-top: 15px; padding: 0 20px; font-size: 14px;
   transition: all 0.3s ease; text-decoration: none;

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
+<title>RE Omagna Ink Studio | Tato & Tindik Profesional | Sihanoukville, Jakarta</title>
 <meta name="description" content="Omagna Ink adalah studio tato & tindik profesional di Sihanoukville, Poipet, Jakarta, dan Chrey Thum. Kami spesialis dalam seni tato kustom, geometric, blackwork, dan tradisional." />
 <meta name="author" content="OMAGNA.INK">
 <meta name="keywords" content="omagna ink, tato profesional, tindik, piercing, studio tato, sihanoukville, poipet, jakarta, chrey thum, komunitas tato, seni tato">
@@ -26,7 +26,7 @@
 <link rel="icon" href="https://res.cloudinary.com/klikgrosirbaju-com/image/upload/f_auto,q_auto,w_32/icon-32x32_omagnaink.png" sizes="32x32" />
 <link rel="icon" href="https://res.cloudinary.com/klikgrosirbaju-com/image/upload/f_auto,q_auto,w_192/android-chrome-192x192.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="https://res.cloudinary.com/klikgrosirbaju-com/image/upload/f_auto,q_auto,w_180/apple-touch-icon.png" />
-<meta name="msapplication-TileImage" content="https://res.cloudinary.com/klikgrosirbaju-com/image/upload/f_auto,q_auto,w_270/omagna-ink-270x270_tattoo.png" />
+<meta name="msapplication-TileImage" content="httpshttps://res.cloudinary.com/klikgrosirbaju-com/image/upload/f_auto,q_auto,w_270/omagna-ink-270x270_tattoo.png" />
 
 <!-- Preload gambar LCP dengan prioritas tinggi -->
 <link rel="preload" href="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_480/v1757842560/bg2.webp" as="image" fetchpriority="high">
@@ -163,7 +163,8 @@ body {
   height: auto;  
   display: block;  
   margin: 0 auto;
-  /* OPTIMASI: Transisi hanya pada 'transform' & beri tahu browser untuk bersiap */
+  /* OPTIMASI CLS: Menyediakan aspect-ratio untuk mencegah layout shift */
+  aspect-ratio: 280 / 120;
   transition: transform 0.3s ease;
   will-change: transform;
   border-radius: 8px;
@@ -184,11 +185,13 @@ body {
 /*===== Komponen Tombol =====*/
 .btns {
   display: flex; flex-direction: column; gap: 15px; margin-top: 15px; padding: 0 10px;
+  /* OPTIMASI CLS: Sediakan min-height untuk mencegah container collapse sebelum render */
+  /* Kalkulasi: (5 tombol * 80px tinggi) + (4 jarak * 15px) = 460px */
+  min-height: 460px;
 }
 a.link {
   display: flex; align-items: stretch; height: var(--btn-height); border-radius: var(--btn-radius);
   position: relative; text-decoration: none; min-width: 100%;
-  /* OPTIMASI: Transisi hanya pada 'transform' yang efisien */
   transition: transform 120ms ease;
   will-change: transform;
 }
@@ -205,12 +208,10 @@ a.link {
   filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
 }
 .icon-circle {
-  /* OPTIMASI: Animasikan properti yang lebih ringan (transform) daripada box-shadow */
   transition: transform 0.3s ease;
   will-change: transform;
 }
 a.link:hover .icon-circle {
-  /* Hapus box-shadow inset yang berat, ganti dengan transform yang lebih efisien */
   transform: scale(1.05);
 }
 .right {
@@ -221,7 +222,6 @@ a.link:hover .icon-circle {
   position: relative; color: #fff; font-weight: 700; letter-spacing: 0.8px;
   text-transform: uppercase; font-size: 14px; z-index: 2;
   box-shadow: 0 6px 0 rgba(6,34,66,0.44);
-  /* OPTIMASI: Transisikan transform & box-shadow secara eksplisit, bukan 'all' */
   transition: transform 120ms ease, box-shadow 120ms ease;
   will-change: transform, box-shadow;
 }
@@ -230,7 +230,6 @@ a.link:hover .icon-circle {
   background: linear-gradient(180deg, var(--navy-1), var(--navy-2));
   transform: skewX(-22deg); z-index: 4; border-top-left-radius: 6px; border-bottom-left-radius: 6px;
 }
-/* OPTIMASI: Menghapus transisi box-shadow yang berat dari 'hover' untuk performa lebih baik */
 a.link:hover .right {transform: translateY(-3px);}
 a.link:active {transform: translateY(2px)}
 
@@ -268,7 +267,6 @@ a.link:active {transform: translateY(2px)}
   padding: 15px 20px;
   border-radius: var(--btn-radius);
   box-shadow: 0 6px 15px rgba(6, 34, 66, 0.08), -4px -4px 10px rgba(255, 255, 255, 0.9);
-  /* OPTIMASI: Ganti transisi 'all' dengan 'transform' dan 'box-shadow' */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   will-change: transform, box-shadow;
   text-decoration: none;
@@ -297,7 +295,6 @@ a.link:active {transform: translateY(2px)}
   font-weight: 700; letter-spacing: 1.2px;
   box-shadow: 8px 10px 20px rgba(6,34,66,0.06), -4px -4px 10px rgba(255,255,255,0.9);
   text-transform: uppercase; margin-top: 15px; padding: 0 20px; font-size: 14px;
-  /* OPTIMASI: Ganti 'all' dengan properti spesifik */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   will-change: transform, box-shadow;
   text-decoration: none;
@@ -312,7 +309,6 @@ footer {margin-top: 25px;}
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
   background: var(--navy-1); border: 3px solid var(--panel-white);
   box-shadow: 0 4px 12px rgba(6,34,66,0.15), 0 2px 4px rgba(0,0,0,0.1);
-  /* OPTIMASI: Ganti 'all' dengan properti spesifik */
   transition: transform 0.3s ease, background-color 0.3s ease;
   will-change: transform;
   position: relative; overflow: hidden;
@@ -327,7 +323,6 @@ footer {margin-top: 25px;}
 .social:hover {transform: translateY(-4px) scale(1.1); background: var(--navy-2)}
 .social:hover img {transform: scale(1.15)}
 .copyright-text {
-  /* REVISI: Mengubah warna teks menjadi putih sesuai permintaan */
   color: var(--panel-white);
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
   font-size: clamp(12px, 3vw, 14px);
@@ -376,11 +371,6 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
 <main class="wrap" role="main">
   <div class="header-container">
     <div class="logo">
-      <!-- REVISI: Menambahkan lebih banyak ukuran pada srcset untuk optimasi.
-           Ini memberikan browser pilihan yang lebih granular, memungkinkannya
-           untuk mengunduh gambar yang ukurannya paling mendekati kebutuhan
-           sebenarnya (berdasarkan 'sizes' dan Device Pixel Ratio), sehingga
-           mengurangi pemborosan data dan mencapai potensi penghematan. -->
       <img
         src="https://res.cloudinary.com/omagnaink/image/upload/f_auto,q_auto,w_280/v1757842560/omagnaink-logo2025-transparant.webp"
         srcset="
@@ -470,3 +460,4 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
 </main>
 </body>
 </html>
+

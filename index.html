@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- REVISI SEO: Judul difokuskan ke Sihanoukville KPS -->
-<title>CUKUP Omagna Ink Sihanoukville KPS Tattoo Studio & Piercing | Profesional di Kamboja</title>
+<title>REVISI Omagna Ink Sihanoukville KPS Tattoo Studio & Piercing | Profesional di Kamboja</title>
 <!-- REVISI SEO: Deskripsi difokuskan ke Sihanoukville KPS -->
 <meta name="description" content="Omagna Ink Sihanoukville KPS adalah studio tato & tindik profesional terkemuka di Sihanoukville, Kamboja. Kami spesialis dalam seni tato kustom, geometric, blackwork, dan tradisional." />
 <meta name="author" content="OMAGNA.INK">
@@ -99,9 +99,10 @@
   --accent-red: #d91602;
   --text-dark: #1d334f;
   /* REVISI: Ukuran Tombol & Komponen disesuaikan */
-  --btn-height: 68px;
+  --btn-height: 60px;
   --btn-radius: 16px;
-  --left-width: 110px;
+  /* REVISI: Lebar area ikon dikurangi agar lebih dekat ke teks */
+  --left-width: 80px;
   --safe-max: 500px;
 }
 
@@ -180,10 +181,10 @@ body {
 .btns {
   display: flex; flex-direction: column; 
   /* REVISI: Jarak Tombol dikurangi */
-  gap: 10px; 
+  gap: 8px; 
   margin-top: 15px; padding: 0 10px;
   /* REVISI: min-height dihitung ulang untuk CLS */
-  min-height: 380px;
+  min-height: 332px;
 }
 a.link {
   display: flex; align-items: stretch; height: var(--btn-height); border-radius: var(--btn-radius);
@@ -198,9 +199,9 @@ a.link {
   display: flex; align-items: center; justify-content: center; position: relative; z-index: 3;
   box-shadow: 8px 10px 18px rgba(6,34,66,0.06), -4px -4px 10px rgba(255,255,255,0.9);
 }
-/* REVISI: Ukuran ikon disesuaikan */
+/* REVISI: Ukuran ikon diperbesar */
 .icon-circle img {
-  width: 50px; height: 50px;
+  width: 48px; height: 48px;
   object-fit: contain;
   filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
 }
@@ -215,9 +216,11 @@ a.link:hover .icon-circle {
   flex: 1;
   background: linear-gradient(180deg, var(--navy-1), var(--navy-2));
   border-top-right-radius: var(--btn-radius); border-bottom-right-radius: var(--btn-radius);
-  display: flex; align-items: center; padding-left: 20px; padding-right: 15px;
+  display: flex; align-items: center; 
+  /* REVISI: Padding disesuaikan */
+  padding-left: 15px; padding-right: 15px;
   position: relative; color: #fff; font-weight: 700; letter-spacing: 0.8px;
-  text-transform: uppercase; font-size: 14px; z-index: 2;
+  text-transform: uppercase; font-size: 13px; z-index: 2;
   box-shadow: 0 6px 0 rgba(6,34,66,0.44);
   transition: transform 120ms ease, box-shadow 120ms ease;
   will-change: transform, box-shadow;
@@ -326,14 +329,14 @@ a:focus-visible {outline: 3px solid rgba(13,44,84,0.4); outline-offset: 4px; bor
   .logo { margin-bottom: 5px; }
   body { padding-top: 0; }
   /* REVISI: Ukuran ikon disesuaikan */
-  .icon-circle img{width:46px;height:46px}
+  .icon-circle img{width:44px;height:44px}
   .social{width:70px;height:70px}
   .social img{width:45px;height:45px}
 }
 @media(max-width: 400px) {
   body { padding-top: 0; }
   /* REVISI: Ukuran ikon disesuaikan */
-  .icon-circle img{width:42px;height:42px}
+  .icon-circle img{width:40px;height:40px}
   .social{width:60px;height:60px}
   .social img{width:40px;height:40px}
 }
